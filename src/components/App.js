@@ -1,0 +1,43 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PageNotFound from './common/PageNotFound';
+import Home from './landing/Home';
+import CourseListContainer from './course/CourseListContainer'; // eslint-disable-line import/no-named-as-default
+import AddOrEditCourseContainer from './course/AddOrEditCourseContainer'; // eslint-disable-line import/no-named-as-default
+import Products from './Products';
+import Customer from './Customer';
+import CustomerView from './CustomerView';
+import createBrowserHistory from 'history/createBrowserHistory';
+import HeaderNavContainer from './landing/HeaderNavContainer'; // eslint-disable-line import/no-named-as-default
+
+
+
+const history = createBrowserHistory();
+
+
+const App = () => {
+    return (
+        <div >
+            <Router history={history}>
+                <div>
+
+                    <HeaderNavContainer />
+
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/courses" component={CourseListContainer} />
+                        <Route exact path="/course" component={AddOrEditCourseContainer} />
+                        <Route path="/course/:id" component={AddOrEditCourseContainer} />
+                        <Route path="/Products" component={Products} />
+                        <Route path="/customer" component={Customer} />
+                        <Route path="/CustomerView" component={CustomerView} />
+                        <Route component={PageNotFound} />
+                    </Switch>
+                </div>
+            </Router>
+        </div>
+    );
+};
+
+
+export default App;
