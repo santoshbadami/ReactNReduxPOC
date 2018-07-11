@@ -1,7 +1,16 @@
 import React from 'react';
 
 
-const ProductAdd = () => {
+
+export default class  ProductAdd extends React.Component{
+  constructor(){
+    super();
+    this.handleSave = this.handleSave.bind(this);
+  }
+  handleSave(){
+    this.props.handleSave();
+  }
+  render(){
   return (
       <div className="col-md-6">
       <div className="tile">
@@ -19,12 +28,10 @@ const ProductAdd = () => {
           </form>
         </div>
         <div className="tile-footer">
-          <button className="btn btn-primary" type="button"><i className="fa fa-fw fa-lg fa-check-circle"></i>Save</button>&nbsp;&nbsp;&nbsp;<a className="btn btn-secondary" href="#"><i className="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+          <button className="btn btn-primary" type="button" onClick={this.handleSave} ><i className="fa fa-fw fa-lg fa-check-circle"></i>Save</button>&nbsp;&nbsp;&nbsp;<a className="btn btn-secondary" href="#"><i className="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
         </div>
       </div>
     </div>
-);
-};
-
-
-export default ProductAdd;
+  );
+}
+}

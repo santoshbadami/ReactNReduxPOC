@@ -2,7 +2,15 @@ import React from 'react';
 import ProductAdd from '../components/ProductAdd'
 import ProductView from '../components/ProductView'
 
-const Products = () => {
+export default class Products extends React.Component{
+  constructor(){
+    super();
+    this.handleSave=this.handleSave.bind(this);
+  }
+  handleSave(){
+  alert('products');
+}
+  render(){
   return (
     <main className="app-content">
       <div className="app-title">
@@ -16,12 +24,10 @@ const Products = () => {
         </ul>
       </div>
       <div className="row">
-      <ProductAdd/>
+      <ProductAdd handleSave={this.handleSave}/>
       <ProductView/>
       </div>
     </main>
   );
+}
 };
-
-
-export default Products;
