@@ -1,14 +1,12 @@
 import React from 'react';
 
-
-
 export default class  ProductAdd extends React.Component{
   constructor(){
     super();
     this.handleSave = this.handleSave.bind(this);
   }
   handleSave(){
-    this.props.handleSave();
+    this.props.handleSave(this.inputproduct.value,this.inputup.value);
   }
   render(){
   return (
@@ -19,11 +17,11 @@ export default class  ProductAdd extends React.Component{
           <form>
             <div className="form-group">
               <label className="control-label">Product</label>
-              <input className="form-control" type="text"/>
+              <input className="form-control" type="text" ref={inputproduct=>this.inputproduct=inputproduct}/>
             </div>
             <div className="form-group">
               <label className="control-label">Unit Price</label>
-              <input className="form-control" type="number" />
+              <input className="form-control" type="number" ref={inputup=>this.inputup=inputup}/>
             </div>
           </form>
         </div>

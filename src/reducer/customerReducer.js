@@ -2,17 +2,16 @@ import * as ActionType from '../action/ActionType';
 import initialState from './initialState';
 
 
-const productReducer = (state = initialState.productReducer, action) => {
-    debugger;
+const customerReducer = (state = initialState.customerReducer, action) => {
     switch(action.type) {
-        case ActionType.GET_PRODUCTS_RESPONSE: {
+        case ActionType.GET_CUSTOMERS_RESPONSE: {
             return {
                 ...state, 
-                products: Object.assign([], action.products)
+                customers:Object.assign([],action.customers)
             };
         }
         default: { return state; }
     }
 };
 
-export default productReducer;
+export default customerReducer;

@@ -51,13 +51,13 @@ export const HeaderNavContainer = ({apiCallsInProgress}) => {
 
 
 HeaderNavContainer.propTypes = {
-    apiCallsInProgress: PropTypes.number.isRequired
+    // apiCallsInProgress: PropTypes.number.isRequired
 };
 
 
 
 const mapStateToProps = state => ({
-    apiCallsInProgress: state.apiReducer.apiCallsInProgress
+    // apiCallsInProgress: state.apiReducer.apiCallsInProgress
 });
 
 

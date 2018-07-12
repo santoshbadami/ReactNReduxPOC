@@ -1,13 +1,15 @@
 //This is to ensure that we can see the entirety of the store
 
 export default {
-    authorReducer: {authors: []},
+    customerReducer:{customers:[]},
 
-    coursesReducer: {courses: []},
+    productReducer:{products:[]}
 
-    productReducer:{products:[]},
+    // authorReducer: {authors: []},
 
-    selectedCourseReducer: {course: undefined},
+    // coursesReducer: {courses: []},
 
-    apiReducer: {apiCallsInProgress: 0}
+    // selectedCourseReducer: {course: undefined},
+
+    // apiReducer: {apiCallsInProgress: 0}
 };
