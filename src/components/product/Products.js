@@ -10,23 +10,32 @@ class Products extends React.Component{
   constructor(){
     super();
     this.handleSave=this.handleSave.bind(this);
+    this.deleteProduct=this.deleteProduct.bind(this);
   }
   componentDidMount() {
-    debugger;
     this.props.action.getProductsAction()
         .catch(error => {
             toastr.error(error);
         });
     }
-  handleSave(product,unitPrice){
-    debugger
-    this.props.action.saveProductAction()
+  handleSave(productName,unitPrice){
+    const product={
+    productid:'',
+    productName:productName,
+    unitPrice:unitPrice
+    }
+    this.props.action.saveProductAction(product)
       .catch(error=>{
         toastr.error(error);
       })
+   }
+    deleteProduct(id){
+    this.props.action.deleteProductAction(id)
+    .catch(error => {
+    toastr.error(error);
+     });
 }
   render(){
-    debugger;
     const {products}=this.props;
   return (
     <main className="app-content">
@@ -57,7 +66,7 @@ class Products extends React.Component{
         <tbody>
         {
           products.products.map(product=>{debugger;
-          return(<ProductView product={product}/>); 
+          return(<ProductView product={product} deleteProduct={this.deleteProduct}/>); 
            })
         }
         </tbody>

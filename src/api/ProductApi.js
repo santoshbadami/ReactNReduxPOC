@@ -52,6 +52,15 @@ class ProductApi {
             }, delay);
         });
     }
+    static deleteProduct(productid) {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                const indexOfCourseToDelete = products.findIndex(product => product.productid === productid);
+                products.splice(indexOfCourseToDelete, 1);
+                resolve();
+            }, delay);
+        });
+    }
 }
 
 

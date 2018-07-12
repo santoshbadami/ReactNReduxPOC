@@ -3,7 +3,6 @@ import initialState from './initialState';
 
 
 const productReducer = (state = initialState.productReducer, action) => {
-    debugger;
     switch(action.type) {
         case ActionType.GET_PRODUCTS_RESPONSE: {
             return {

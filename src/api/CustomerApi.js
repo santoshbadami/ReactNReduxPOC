@@ -41,11 +41,33 @@ const customers=[{
 }
 ]
 
+const generateId=()=>{
+    return customers.length+1;
+}
 class CustomerApi {
     static getAllCustomers() {
         return new Promise((resolve) => {
             setTimeout(() => {
                 resolve(Object.assign([], customers));
+            }, delay);
+        });
+    }
+
+    static saveProduct(customer) {
+        customer = Object.assign({}, customer); // to avoid manipulating object passed in.
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // Simulate server-side validation
+                
+                if (customer.custId) {
+                    const existingCustomerIndex = customers.findIndex(a => a.custId === customer.custId);
+                    customers.splice(existingCustomerIndex, 1, customer);
+                } else {
+                    customer.custId = generateId();
+                    customers.push(customer);
+                }
+
+                resolve(customer);
             }, delay);
         });
     }

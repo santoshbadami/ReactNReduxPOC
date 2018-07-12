@@ -7,6 +7,8 @@ export default class  ProductAdd extends React.Component{
   }
   handleSave(){
     this.props.handleSave(this.inputproduct.value,this.inputup.value);
+    this.inputproduct.value='';
+    this.inputup.value='';
   }
   render(){
   return (

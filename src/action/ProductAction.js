@@ -19,23 +19,46 @@ export function getProductsAction() {
     };
 }
 
-export function saveProductAction(courseBeingAddedOrEdited) {
-    return function (dispatch) {
+export const addNewProductResponse = () => ({
+    type: ActionType.ADD_NEW_PRODUCT_RESPONSE
+});
+export const updateExistingProductResponse = () => ({
+    type: ActionType.UPDATE_PRODUCT_RESPONSE
+});
 
-        //if authorId exists, it means that the course is being edited, therefore update it.
-        //if authorId doesn't exist, it must therefore be new course that is being added, therefore add it
-        return CourseApi.saveCourse(courseBeingAddedOrEdited)
+export function saveProductAction(product) {
+    return function (dispatch) {
+        return ProductApi.saveProduct(product)
             .then(() => {
-                if (courseBeingAddedOrEdited.id) {
-                    dispatch(updateExistingCourseResponse());
+                if (product.productid) {
+                    dispatch(updateExistingProductResponse());
                 } else {
-                    dispatch(addNewCourseResponse());
+                    dispatch(addNewProductResponse());
                 }
             }).then(() => {
-                dispatch(getCoursesAction());
+                dispatch(getProductsAction()); 
             }).catch(error => {
-                dispatch(ApiCallErrorAction());
                 throw (error);
             });
     };
 }
+
+export const deleteProductResponse = () => ({
+    type: ActionType.DELETE_PRODUCT_RESPONSE
+});
+
+
+
+export function deleteProductAction(productid) {
+    return (dispatch) => {
+        return ProductApi.deleteProduct(productid)
+            .then(() => {
+                dispatch(deleteProductResponse());
+            }).then(() => {
+                dispatch(getProductsAction());
+            }).catch(error => {
+                throw error;
+            });
+    };
+}
+
