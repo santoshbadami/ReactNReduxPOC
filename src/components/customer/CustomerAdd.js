@@ -33,6 +33,7 @@ class Customer extends React.Component{
     this.inputvat.value=''
   }
   render(){
+    debugger;
   return (
     <main className="app-content">
       <div className="app-title">

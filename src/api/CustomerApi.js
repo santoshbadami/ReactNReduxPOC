@@ -31,7 +31,7 @@ const customers=[{
     custId:3,
     custName:'MNOPOl',
     address:'Mysore',
-    phone:123,
+    landline:123,
     mobile:9731565322,
     emailId:'santosh@gmail.com',
     vatNo:'vat123',

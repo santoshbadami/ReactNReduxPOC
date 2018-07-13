@@ -50,7 +50,7 @@ class CustomerListContainer extends React.Component{
                   <tr>
                     <th>Company Name</th>
                     <th>Address</th>
-                    <th>Phone</th>
+                    <th>Landline</th>
                     <th>Mobile</th>
                     <th>Email</th>
                     <th>Vat No</th>
