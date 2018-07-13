@@ -3,8 +3,9 @@
 export default {
     customerReducer:{customers:[]},
 
-    productReducer:{products:[]}
+    productReducer:{products:[]},
 
+    selectedProductReducer: {product: undefined}
     // authorReducer: {authors: []},
 
     // coursesReducer: {courses: []},

@@ -36,7 +36,7 @@ class ProductApi {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 // Simulate server-side validation
-                
+                debugger;
                 if (product.productid) {
                     const existingProductIndex = products.findIndex(a => a.productid === product.productid);
                     products.splice(existingProductIndex, 1, product);
@@ -58,6 +58,18 @@ class ProductApi {
                 const indexOfProductToDelete = products.findIndex(product => product.productid === productid);
                 products.splice(indexOfProductToDelete, 1);
                 resolve();
+            }, delay);
+        });
+    }
+    static getProduct(id) {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                const existingProductIndex = products.findIndex(product => product.productid === id);
+                
+                const productFound = Object.assign({}, products[existingProductIndex]);
+
+                resolve(productFound);
+
             }, delay);
         });
     }

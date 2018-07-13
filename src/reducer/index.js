@@ -6,10 +6,12 @@ import authorReducer from './authorReducer';
 import apiReducer from './apiReducer';
 import customerReducer from './customerReducer';
 import productreducer from './productReducer';
+import selectedProductReducer from './selectedProductReducer';
 
 export default combineReducers({
     customerReducer,
     productreducer,
+    selectedProductReducer,
     // coursesReducer,
     // selectedCourseReducer,
     // authorReducer,

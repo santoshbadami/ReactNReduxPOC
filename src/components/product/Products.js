@@ -19,9 +19,9 @@ class Products extends React.Component{
             toastr.error(error);
         });
     }
-  handleSave(productName,unitPrice){
+  handleSave(pid,productName,unitPrice){
     const product={
-    productid:'',
+    productid:pid,
     productName:productName,
     unitPrice:unitPrice
     }
@@ -35,12 +35,16 @@ class Products extends React.Component{
     .catch(error => {
     toastr.error(error);
      });
-}
-editProduct(id){
-  alert(id);
-}
+  }
+    editProduct(id){
+      this.props.action.getProductAction(id)
+      .catch(error=>{
+        toastr.error(error);
+      });
+  }
   render(){
     const {products}=this.props;
+    const {product}=this.props.selectedProduct;
   return (
     <main className="app-content">
       <div className="app-title">
@@ -54,7 +58,7 @@ editProduct(id){
         </ul>
       </div>
       <div className="row">
-      <ProductAdd handleSave={this.handleSave}/>
+      <ProductAdd {...product} handleSave={this.handleSave}/>
       <div className="col-md-6">
     <div className="tile">
       {/* <h3 className="tile-title">Register</h3> */}
@@ -69,7 +73,7 @@ editProduct(id){
         </thead>
         <tbody>
         {
-          products.products.map(product=>{debugger;
+          products.products.map(product=>{
           return(<ProductView product={product} deleteProduct={this.deleteProduct} editProduct={this.editProduct}/>); 
            })
         }
@@ -84,9 +88,9 @@ editProduct(id){
 };
 
 const mapStateToProps=(state,ownProps)=>{
-  debugger;
   return{
-    products:state.productreducer
+    products:state.productreducer,
+    selectedProduct:state.selectedProductReducer
   }
 }
 

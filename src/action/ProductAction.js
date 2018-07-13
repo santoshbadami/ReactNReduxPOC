@@ -1,18 +1,17 @@
 import * as ActionType from './ActionType';
 import ProductApi from '../api/ProductApi';
 
-export const getProductResponse = products => (
+export const getProductsResponse = products => (
     {
     type: ActionType.GET_PRODUCTS_RESPONSE,
     products
 });
 
 export function getProductsAction() {
-    debugger;
     return (dispatch) => {
         return ProductApi.getAllProducts()
             .then(products => {debugger;
-                dispatch(getProductResponse(products));
+                dispatch(getProductsResponse(products));
             }).catch(error => {
                 throw error;
             });
@@ -26,12 +25,19 @@ export const updateExistingProductResponse = () => ({
     type: ActionType.UPDATE_PRODUCT_RESPONSE
 });
 
+export const disposeSelectedProduct = () => ({
+    type: ActionType.DISPOSE_SELECTED_PRODUCT,
+    product: {}
+});
+
+
 export function saveProductAction(product) {
     return function (dispatch) {
         return ProductApi.saveProduct(product)
             .then(() => {
                 if (product.productid) {
                     dispatch(updateExistingProductResponse());
+                    dispatch(disposeSelectedProduct());
                 } else {
                     dispatch(addNewProductResponse());
                 }
@@ -56,6 +62,23 @@ export function deleteProductAction(productid) {
                 dispatch(deleteProductResponse());
             }).then(() => {
                 dispatch(getProductsAction());
+            }).catch(error => {
+                throw error;
+            });
+    };
+}
+
+export const getProductResponse = productFound => ({
+    type: ActionType.GET_PRODUCT_RESPONSE,
+    product: productFound
+});
+
+export function getProductAction(id){
+    debugger;
+    return (dispatch) => {
+        return ProductApi.getProduct(id)
+            .then(product => {
+                dispatch(getProductResponse(product));
             }).catch(error => {
                 throw error;
             });
