@@ -27,7 +27,6 @@ export const updateExistingCustomerResponse = () => ({
 });
 
 export function saveCustomerAction(customer) {
-    debugger;
     return function (dispatch) {
         return CustomerApi.saveProduct(customer)
             .then(() => {
@@ -41,5 +40,22 @@ export function saveCustomerAction(customer) {
             }).catch(error => {
                 throw (error);
             });
+    };
+}
+
+export const deleteCustomerResponse=()=>({
+    type:ActionType.DELETE_CUSTOMER_RESPONSE
+})
+
+export function deleteCustomerAction(id){
+    return (dispatch)=>{
+        return CustomerApi.deleteCustomer(id)
+        .then(()=>{
+            dispatch(deleteCustomerResponse());
+        }).then(()=>{
+            dispatch(getCustomersAction());
+        }).catch(error=>{
+            throw error;
+        });
     };
 }

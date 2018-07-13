@@ -10,8 +10,15 @@ import * as customerAction from '../../action/CustomerAction';
 class CustomerListContainer extends React.Component{
   constructor(){
     super();
+    this.deleteCustomer=this.deleteCustomer.bind(this);
   }
 
+  deleteCustomer(id){
+    this.props.action.deleteCustomerAction(id)
+    .catch(error=>{
+      toastr.error(error);
+    })
+  }
 
   componentDidMount() {
     this.props.action.getCustomersAction()
@@ -52,8 +59,8 @@ class CustomerListContainer extends React.Component{
                 </thead>
                 <tbody>
                 {
-                 customers.customers.map(customer=>{debugger;
-                 return(<CustomerView customer={customer}/>); 
+                 customers.customers.map(customer=>{
+                 return(<CustomerView customer={customer} deleteCustomer={this.deleteCustomer}/>); 
                 })
                 }
                 </tbody>

@@ -1,4 +1,5 @@
 import delay from './delay';
+import { promises } from 'fs';
 
 const customers=[{
     custId:1,
@@ -69,6 +70,17 @@ class CustomerApi {
 
                 resolve(customer);
             }, delay);
+        });
+    }
+
+    static deleteCustomer(id){
+        return new Promise((resolve)=>{
+            setTimeout(()=>{
+                debugger;
+                const indexOfcustomerToDelete=customers.findIndex(customer=>customer.custId===id);
+                customers.splice(indexOfcustomerToDelete,1);
+                resolve();
+            },delay);
         });
     }
 }

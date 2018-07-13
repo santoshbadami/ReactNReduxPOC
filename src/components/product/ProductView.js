@@ -17,10 +17,9 @@ class ProductView extends React.Component{
       <td>1</td>
      <td>{product.productName}</td>
      <td>{product.unitPrice}</td>
-     <td><button btn btn-default btn-sm><i className="fa fa-edit"></i></button> 
-     <button onClick={this.deleteProduct}>Delete</button>
-     <a class="btn btn-default btn-sm"><i className="fa fa-edit"></i></a>
-     <a class="btn btn-default btn-sm"><i className="fa fa-trash"></i></a>
+     <td>
+     <i className="fa fa-edit" onClick={this.EditProduct}></i> {`     `}
+     <i className="fa fa-trash" onClick={this.deleteProduct}></i>
      </td>
      </tr>
 );

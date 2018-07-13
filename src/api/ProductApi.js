@@ -55,8 +55,8 @@ class ProductApi {
     static deleteProduct(productid) {
         return new Promise((resolve) => {
             setTimeout(() => {
-                const indexOfCourseToDelete = products.findIndex(product => product.productid === productid);
-                products.splice(indexOfCourseToDelete, 1);
+                const indexOfProductToDelete = products.findIndex(product => product.productid === productid);
+                products.splice(indexOfProductToDelete, 1);
                 resolve();
             }, delay);
         });
