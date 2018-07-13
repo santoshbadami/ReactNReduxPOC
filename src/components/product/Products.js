@@ -11,6 +11,7 @@ class Products extends React.Component{
     super();
     this.handleSave=this.handleSave.bind(this);
     this.deleteProduct=this.deleteProduct.bind(this);
+    this.editProduct=this.editProduct.bind(this);
   }
   componentDidMount() {
     this.props.action.getProductsAction()
@@ -34,6 +35,9 @@ class Products extends React.Component{
     .catch(error => {
     toastr.error(error);
      });
+}
+editProduct(id){
+  alert(id);
 }
   render(){
     const {products}=this.props;
@@ -66,7 +70,7 @@ class Products extends React.Component{
         <tbody>
         {
           products.products.map(product=>{debugger;
-          return(<ProductView product={product} deleteProduct={this.deleteProduct}/>); 
+          return(<ProductView product={product} deleteProduct={this.deleteProduct} editProduct={this.editProduct}/>); 
            })
         }
         </tbody>
