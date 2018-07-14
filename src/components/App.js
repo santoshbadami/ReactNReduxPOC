@@ -1,16 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import PageNotFound from './common/PageNotFound';
 import Home from './landing/Home';
-import CourseListContainer from './course/CourseListContainer'; // eslint-disable-line import/no-named-as-default
-import AddOrEditCourseContainer from './course/AddOrEditCourseContainer'; // eslint-disable-line import/no-named-as-default
 
 import Products from './product/Products';
 import Customer from './customer/CustomerAdd';
 import CustomerListContainer from './customer/CustomerListContainer';
 import createBrowserHistory from 'history/createBrowserHistory';
 import HeaderNavContainer from './landing/HeaderNavContainer'; // eslint-disable-line import/no-named-as-default
-
+import Quotation_Generate from './quotation/Quotation_Generate';
 
 
 const history = createBrowserHistory();
@@ -26,16 +24,12 @@ const App = () => {
 
                     <Switch>
                         <Route exact path="/" component={Home} />
-                        <Route path="/courses" component={CourseListContainer} />
-                        <Route exact path="/course" component={AddOrEditCourseContainer} />
-                        <Route path="/course/:id" component={AddOrEditCourseContainer} />
-
                         <Route path="/Products" component={Products} />
-
-                        <Route path="/customer" component={Customer} />
+                        <Route exact path="/customer" component={Customer} />
                         <Route path="/customer/:id" component={Customer} />
                         <Route path="/CustomerListContainer" component={CustomerListContainer} />
                         <Route path="/CustomerView" component={CustomerListContainer} />
+                        <Route exact path="/quotation" component={Quotation_Generate} />
                         <Route component={PageNotFound} />
                     </Switch>
                 </div>

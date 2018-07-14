@@ -11,15 +11,24 @@ class CustomerListContainer extends React.Component{
   constructor(){
     super();
     this.deleteCustomer=this.deleteCustomer.bind(this);
+    this.editCustomer=this.editCustomer.bind(this);
   }
 
   deleteCustomer(id){
+    debugger;
     this.props.action.deleteCustomerAction(id)
     .catch(error=>{
       toastr.error(error);
     })
   }
-
+  editCustomer(id){
+    this.props.action.getCustomerAction(id)
+      .catch(error=>{
+        toastr.error(error);
+      });
+  this.props.history.push(`/customer`);
+  
+}
   componentDidMount() {
     this.props.action.getCustomersAction()
         .catch(error => {
@@ -60,7 +69,7 @@ class CustomerListContainer extends React.Component{
                 <tbody>
                 {
                  customers.customers.map(customer=>{
-                 return(<CustomerView customer={customer} deleteCustomer={this.deleteCustomer}/>); 
+                 return(<CustomerView customer={customer} deleteCustomer={this.deleteCustomer} editCustomer={this.editCustomer}/>); 
                 })
                 }
                 </tbody>

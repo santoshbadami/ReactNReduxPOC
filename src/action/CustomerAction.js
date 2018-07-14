@@ -1,7 +1,7 @@
 import * as ActionType from './ActionType';
 import CustomerApi from '../api/CustomerApi';
 
-export const getCustomerResponse = customers => (
+export const getCustomersResponse = customers => (
     {
     type: ActionType.GET_CUSTOMERS_RESPONSE,
     customers
@@ -10,10 +10,9 @@ export const getCustomerResponse = customers => (
 export function getCustomersAction() {
     return (dispatch) => {
         return CustomerApi.getAllCustomers()
-            .then(customers => {debugger;
-                dispatch(getCustomerResponse(customers));
+            .then(customers => {
+                dispatch(getCustomersResponse(customers));
             }).catch(error => {
-                debugger;
                 throw error;
             });
     };
@@ -57,5 +56,21 @@ export function deleteCustomerAction(id){
         }).catch(error=>{
             throw error;
         });
+    };
+}
+
+export const getCustomerResponse = customerFound => ({
+    type:ActionType.GET_CUSTOMER_RESPONSE,
+    customer:customerFound
+});
+
+export function getCustomerAction(id){
+    return (dispatch) => {
+        return CustomerApi.getCustomer(id)
+            .then(customer => {
+                dispatch(getCustomerResponse(customer));
+            }).catch(error => {
+                throw error;
+            });
     };
 }

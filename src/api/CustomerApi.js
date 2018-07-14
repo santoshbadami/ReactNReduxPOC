@@ -59,7 +59,7 @@ class CustomerApi {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 // Simulate server-side validation
-                
+                debugger;
                 if (customer.custId) {
                     const existingCustomerIndex = customers.findIndex(a => a.custId === customer.custId);
                     customers.splice(existingCustomerIndex, 1, customer);
@@ -83,6 +83,19 @@ class CustomerApi {
             },delay);
         });
     }
+    static getCustomer(id) {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                const existingCustomerIndex = customers.findIndex(customer => customer.custId === id);
+                
+                const customerFound = Object.assign({}, customers[existingCustomerIndex]);
+                resolve(customerFound);
+
+            }, delay);
+        });
+    }
 }
+
+
 
 export default CustomerApi;

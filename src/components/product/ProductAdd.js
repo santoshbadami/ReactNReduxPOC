@@ -6,7 +6,6 @@ export default class  ProductAdd extends React.Component{
     this.handleSave = this.handleSave.bind(this);
   }
   handleSave(){
-    debugger
     this.props.handleSave(Number(this.inputpid.value),this.inputproduct.value,this.inputup.value);
     this.inputproduct.value='';
     this.inputup.value='';
@@ -24,7 +23,6 @@ export default class  ProductAdd extends React.Component{
           <input type="hidden" value={this.props===undefined?undefined:this.props.productid}  ref={inputpid=>this.inputpid=inputpid}/>
             <div className="form-group">
               <label className="control-label">Product</label>
-              {/* <input value={this.props.productName} onChange={this.onChangeFunction} ref={inputproduct1=>this.inputproduct1=inputproduct1}/> */}
               <input className="form-control" value={this.props.productName} onChange={this.onChangeFunction} type="text" ref={inputproduct=>this.inputproduct=inputproduct}/>
             </div>
             <div className="form-group">

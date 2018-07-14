@@ -31,6 +31,7 @@ class Products extends React.Component{
       })
    }
     deleteProduct(id){
+      debugger;
     this.props.action.deleteProductAction(id)
     .catch(error => {
     toastr.error(error);

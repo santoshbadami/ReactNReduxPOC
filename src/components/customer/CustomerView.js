@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+// import browserHistory from 'react-router';
 
 
 class CustomerView extends React.Component{
@@ -12,12 +13,9 @@ class CustomerView extends React.Component{
         this.props.deleteCustomer(this.props.customer.custId);
     }
     EditCustomer(){
-        debugger;
-        this.props.history.push(`/customer/${this.props.customer.custId}`);
+        this.props.editCustomer(this.props.customer.custId);    
     }
-    componentDidMount(){
-        
-    }
+    
     render(){    
         const {customer}=this.props;
     return(
@@ -36,6 +34,8 @@ class CustomerView extends React.Component{
     );
 }
 }
-
+CustomerView.propTypes = {
+    history: PropTypes.object
+};
 export default CustomerView;
 
