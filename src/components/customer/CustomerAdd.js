@@ -22,22 +22,12 @@ class Customer extends React.Component{
     }}
     this.saveCustomer=this.saveCustomer.bind(this);
   }
-  componentWillMount(){
-     debugger;
-    
-  }
+  
   componentWillUpdate(newProps,newState){
-  debugger;  
   this.setState({cust:newProps.selectedCustomer.customer});
-
   };
-  componentDidUpdate(oldProps,oldState){
-    debugger;
-    
-
-  };
+  
   saveCustomer(){
-    debugger;
     const customer={
     custId:this.inputcid.value,
     custName:this.inputcpm.value,
@@ -65,7 +55,6 @@ class Customer extends React.Component{
 }
 
   render(){
-    debugger;    
   return (
     <main className="app-content">
       <div className="app-title">
@@ -76,7 +65,6 @@ class Customer extends React.Component{
           <li className="breadcrumb-item"><i className="fa fa-home fa-lg"></i></li>
           <li className="breadcrumb-item"><NavLink to="/customer" >Add</NavLink></li>
           <li className="breadcrumb-item"><NavLink to="/CustomerView" >View</NavLink></li>
-          {/* <li className="breadcrumb-item"><a href="#">View</a></li> */}
         </ul>
       </div>
       <div className="row center">

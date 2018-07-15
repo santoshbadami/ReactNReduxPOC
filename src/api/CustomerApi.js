@@ -47,6 +47,7 @@ const generateId=()=>{
 }
 class CustomerApi {
     static getAllCustomers() {
+        
         return new Promise((resolve) => {
             setTimeout(() => {
                 resolve(Object.assign([], customers));

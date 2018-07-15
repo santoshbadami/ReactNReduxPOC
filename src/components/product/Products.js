@@ -88,7 +88,7 @@ class Products extends React.Component{
 }
 };
 
-const mapStateToProps=(state,ownProps)=>{
+const mapStateToProps=(state)=>{
   return{
     products:state.productreducer,
     selectedProduct:state.selectedProductReducer
