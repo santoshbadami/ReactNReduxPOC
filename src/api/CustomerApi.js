@@ -1,5 +1,5 @@
 import delay from './delay';
-import { promises } from 'fs';
+
 
 const customers=[{
     custId:1,
@@ -47,7 +47,6 @@ const generateId=()=>{
 }
 class CustomerApi {
     static getAllCustomers() {
-        
         return new Promise((resolve) => {
             setTimeout(() => {
                 resolve(Object.assign([], customers));

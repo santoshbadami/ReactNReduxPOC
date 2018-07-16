@@ -6,13 +6,23 @@ import * as productAction from '../../action/ProductAction';
 import {connect} from 'react-redux';
 import toastr from 'toastr';
 
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import 'react-datepicker/dist/react-datepicker.css';
+
 class Quotation_Generate extends Component{
-    constructor(){
-        super();
-        this.state={Items:[],ToTExVat:0,vat:0}
-    this.addProduct=this.addProduct.bind(this);
-    this.deleteProduct=this.deleteProduct.bind(this);
+    constructor(props){
+        super(props);
+        this.state={Items:[],ToTExVat:0,vat:0,startDate: moment()}
+        this.handleChange = this.handleChange.bind(this);
+        this.addProduct=this.addProduct.bind(this);
+        this.deleteProduct=this.deleteProduct.bind(this);
     }
+    handleChange(date) {
+        this.setState({
+          startDate: date
+        });
+      }
     componentDidMount() {
         this.props.action.getProductsAction()
             .catch(error => {
@@ -49,19 +59,17 @@ class Quotation_Generate extends Component{
         this.txtTotalPrice.value=''
     }
     deleteProduct(id){
-debugger;
     const products=this.state.Items;
-
     const filteredproduct=products.filter(product=>{
       return product.id!==id;
     })
-    this.setState({item:filteredproduct});
-
+    this.setState({Items:filteredproduct});
     }
   render(){
       var style={};
       if(this.state.Items.length===0)
       style.display = 'none'
+      debugger;
   return (
     <main className="app-content">
       <div className="app-title">
@@ -97,7 +105,8 @@ debugger;
               <div className="col-lg-4">
                   <div className="form-group">
                     <label >Quotation Date</label>
-                    <input className="form-control" ref={inputQTdate=>this.inputQTdate=inputQTdate} type="text" />
+                    {/* <input className="form-control" ref={inputQTdate=>this.inputQTdate=inputQTdate} type="text" /> */}
+                    <DatePicker className="form-control" selected={this.state.startDate} onChange={this.handleChange} ref={inputQTdate=>this.inputQTdate=inputQTdate}/>
                   </div>
                 </div>
             </div>
@@ -277,17 +286,16 @@ debugger;
 }
 };
 
-const mapStateToProps=(state)=>{
+const mapStateToProps=(state,ownProps)=>{
     debugger
     return{
-    products:state.productReducer,
+    prod:state.productReducer,
     customers:state.customerReducer
-    
-}
-}
+};
+};
 
 const mapDispatchToProps=dispatch=>({
-  action:bindActionCreators(Object.assign([],productAction,customerAction),dispatch)
+  action:bindActionCreators(Object.assign({},productAction,customerAction),dispatch)
   
 })
 

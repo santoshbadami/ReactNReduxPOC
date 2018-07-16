@@ -7,7 +7,7 @@ const productReducer = (state = initialState.productReducer, action) => {
         case ActionType.GET_PRODUCTS_RESPONSE: {
             return {
                 ...state, 
-                products: Object.assign([], action.products)
+                products:Object.assign([],action.products)
             };
         }
         default: { return state; }
