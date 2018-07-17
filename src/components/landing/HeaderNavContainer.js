@@ -6,9 +6,9 @@ export const HeaderNavContainer = ({apiCallsInProgress}) => {
     return (
       <div>
         <header className="app-header">
-        <NavLink className="app-header__logo" activeClassName="active" to="/customer" >Customer</NavLink>
-        <NavLink className="app-header__logo" activeClassName="active" to="/Products" >Product</NavLink>
-        <NavLink className="app-header__logo" activeClassName="active" to="/quotation" >Quotation</NavLink>
+        <NavLink className="app-header__logo" activeClassName="active" to="/customer" >Customer /</NavLink>
+        <NavLink className="app-header__logo divider-vertical" activeClassName="active" to="/Products" >Product /</NavLink>
+        <NavLink className="app-header__logo" activeClassName="active" to="/quotation" >Quotation /</NavLink>
       <ul className="app-nav">
         <li className="dropdown"><a className="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i className="fa fa-user fa-lg"></i></a>
           <ul className="dropdown-menu settings-menu dropdown-menu-right">
@@ -19,8 +19,6 @@ export const HeaderNavContainer = ({apiCallsInProgress}) => {
         </li>
       </ul>
     </header>
-<div>
-</div>
 </div>
     );
 };

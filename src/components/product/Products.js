@@ -90,7 +90,7 @@ class Products extends React.Component{
 
 const mapStateToProps=(state)=>{
   return{
-    products:state.productreducer,
+    products:state.productReducer,
     selectedProduct:state.selectedProductReducer
   }
 }

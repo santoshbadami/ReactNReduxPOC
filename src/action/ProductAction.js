@@ -10,7 +10,7 @@ export const getProductsResponse = products => (
 export function getProductsAction() {
     return (dispatch) => {
         return ProductApi.getAllProducts()
-            .then(products => {debugger;
+            .then(products => {
                 dispatch(getProductsResponse(products));
             }).catch(error => {
                 throw error;

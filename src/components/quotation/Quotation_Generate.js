@@ -137,13 +137,12 @@ class Quotation_Generate extends Component{
         <tr>
             <td>
             </td>
-            <td>
+            <td className="product-select">
             <select className="form-control" ref={selectDescr=>this.selectDescr=selectDescr}>
-            {/* {this.props.products.products.map(prod=>(  
+            {this.props.products.products.map(prod=>(  
                 <option defaultValue={prod.productid}>{prod.productName}</option>
-            ))} */}
-            <option>Test </option>
-                    </select>
+            ))}
+            </select>
             </td>
             <td>
                 <input type="text" ref={txtQty=>this.txtQty=txtQty} className="form-control" onChange={this.onChangeFunction.bind(this)} />
@@ -286,10 +285,10 @@ class Quotation_Generate extends Component{
 }
 };
 
-const mapStateToProps=(state,ownProps)=>{
+const mapStateToProps=(state)=>{
     debugger
     return{
-    prod:state.productReducer,
+    products:state.productReducer,
     customers:state.customerReducer
 };
 };
